@@ -28,7 +28,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
     <Folder Include="IServices\" />
     <Folder Include="Services\" />
   </ItemGroup>

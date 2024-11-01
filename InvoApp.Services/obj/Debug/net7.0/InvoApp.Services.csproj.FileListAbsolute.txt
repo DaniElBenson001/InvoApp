@@ -1,0 +1,17 @@
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Services.deps.json
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Services.runtimeconfig.json
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Services.dll
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Services.pdb
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Models.dll
+C:\Projects\InvoApp\InvoApp.Services\bin\Debug\net7.0\InvoApp.Models.pdb
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.csproj.AssemblyReference.cache
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.AssemblyInfoInputs.cache
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.AssemblyInfo.cs
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.csproj.CoreCompileInputs.cache
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.csproj.CopyComplete
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.dll
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\refint\InvoApp.Services.dll
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.pdb
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\InvoApp.Services.genruntimeconfig.cache
+C:\Projects\InvoApp\InvoApp.Services\obj\Debug\net7.0\ref\InvoApp.Services.dll

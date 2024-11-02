@@ -1,3 +1,4 @@
 ﻿/InvoApp/appsettings.json
-/.vs/InvoApp/FileContentIndex
-/.vs/InvoApp/DesignTimeBuild
+*.vsidx
+/.vs/InvoApp/FileContentIndex/2d11f3fd-f5c5-4448-9ad9-dc6fa77df6ec.vsidx
+/.vs/InvoApp/v17/.suo

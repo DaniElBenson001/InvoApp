@@ -11,5 +11,5 @@ namespace InvoApp.Models.DtoModels
         public bool Status {  get; set; }
         public string? StatusMessage { get; set; }
         public T? Data { get; set; }
+        public string? ErrorMessage { get; set; }
     }
-}

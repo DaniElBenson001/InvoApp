@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿using InvoApp.Models.DtoModels;
 using InvoApp.Models.Entities;
 using InvoApp.Services.Data;
@@ -11,11 +12,17 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Security.Claims;
 using System.Security.Cryptography;
+=======
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+>>>>>>> master
 using System.Text;
 using System.Threading.Tasks;
 
 namespace InvoApp.Services.Services
 {
+<<<<<<< HEAD
     public class UserService : IUserService
     {
         private readonly DataContext _context;
@@ -145,5 +152,9 @@ namespace InvoApp.Services.Services
                 passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
             }
         }
+=======
+    internal class UserService
+    {
+>>>>>>> master
     }
 }

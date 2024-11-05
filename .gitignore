@@ -1,4 +1,17 @@
 ﻿/InvoApp/appsettings.json
+<<<<<<< HEAD
 *.vsidx
 /.vs/InvoApp/FileContentIndex/2d11f3fd-f5c5-4448-9ad9-dc6fa77df6ec.vsidx
 /.vs/InvoApp/v17/.suo
+=======
+/.vs/InvoApp/FileContentIndex/37a0a402-aba9-4184-855b-dac6e02e6dd1.vsidx
+/.vs/InvoApp/FileContentIndex/7e3cdf0b-f812-495b-aea5-fcf51124cf8b.vsidx
+/.vs/InvoApp/FileContentIndex/81740e2e-581c-4837-b3de-4da386ffe4c0.vsidx
+/.vs/InvoApp/FileContentIndex/9d47304a-1a5d-47b7-8db3-47383c96d750.vsidx
+/.vs/InvoApp/FileContentIndex/aaef4360-04c6-4c93-91a7-5c8b81895514.vsidx
+/.vs/InvoApp/FileContentIndex/b30dbe5c-7d77-43ce-b77e-9e86e2e5bc22.vsidx
+/.vs/InvoApp/FileContentIndex/ee2519c8-8a5b-4641-a9a5-bc74e1a22094.vsidx
+/.vs/InvoApp/FileContentIndex/f6cd7cba-b909-4c39-9e2a-773cba0cc548.vsidx
+/.vs/InvoApp/FileContentIndex/ee2519c8-8a5b-4641-a9a5-bc74e1a22094.vsidx
+/.vs/InvoApp/FileContentIndex/ee2519c8-8a5b-4641-a9a5-bc74e1a22094.vsidx
+>>>>>>> master

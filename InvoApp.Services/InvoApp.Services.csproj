@@ -28,8 +28,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="IServices\" />
+<<<<<<< HEAD
     <Folder Include="Services\" />
+=======
+    <Folder Include="IServices\" />
+>>>>>>> master
   </ItemGroup>
 
 </Project>

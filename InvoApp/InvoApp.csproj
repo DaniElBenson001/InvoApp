@@ -29,8 +29,4 @@
     <ProjectReference Include="..\InvoApp.Services\InvoApp.Services.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>

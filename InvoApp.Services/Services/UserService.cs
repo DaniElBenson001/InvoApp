@@ -129,7 +129,7 @@ namespace InvoApp.Services.Services
             catch (Exception ex)
             {
                 infoResponse.Status = false;
-                infoResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!"
+                infoResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
                 infoResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
                 return infoResponse;
             }

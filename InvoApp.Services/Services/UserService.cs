@@ -66,27 +66,13 @@ namespace InvoApp.Services.Services
                 userResponse.StatusMessage = "Successful";
                 return userResponse;
             }
-            catch (SqlException ex)
+            catch (Exception ex) when (ex is SqlException || ex is DbUpdateException)
             {
                 userResponse.Status = false;
                 userResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
-                userResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
-                return userResponse;
+                userResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
-            catch (DbUpdateException ex)
-            {
-                userResponse.Status = false;
-                userResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
-                userResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
-                return userResponse;
-            }
-            catch (Exception ex)
-            {
-                userResponse.Status = false;
-                userResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
-                userResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
-                return userResponse;
-            }
+            return userResponse;
         }
 
         public async Task<DataResponse<UserInfoDTO>> GetUserInfo()
@@ -119,20 +105,13 @@ namespace InvoApp.Services.Services
                 infoResponse.Data = userData;
                 return infoResponse;
             }
-            catch (SqlException ex)
+            catch (Exception ex) when (ex is SqlException)
             {
                 infoResponse.Status = false;
                 infoResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
-                infoResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
-                return infoResponse;
+                infoResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
-            catch (Exception ex)
-            {
-                infoResponse.Status = false;
-                infoResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
-                infoResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow.ToString()}";
-                return infoResponse;
-            }
+            return infoResponse;
         }
 
         public void PasswordHashGenerator(string password,

@@ -18,6 +18,7 @@ namespace InvoApp.Models.Entities
         public bool IsTwoFactorEnabled { get; set; }
         public string TwoFactorCode { get; set; } = string.Empty;
         public string CompanyName { get; set; } = string.Empty;
+        public string VerificationToken { get; set; } = string.Empty;
         public string CompanyLogo { get; set; } = string.Empty;
         public string CompanyAddress { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }

@@ -84,6 +84,9 @@ namespace InvoApp.Services.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
                     b.Property<string>("PaymentTerms")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -444,6 +447,10 @@ namespace InvoApp.Services.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("TwoFactorCode")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("VerificationToken")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

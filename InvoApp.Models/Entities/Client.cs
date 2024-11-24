@@ -27,6 +27,7 @@ namespace InvoApp.Models.Entities
         public string PaymentTerms { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set;}
+        public bool IsDeleted { get; set; } = false;
         public List<Invoice>? Invoices { get; set; }
     }
 }

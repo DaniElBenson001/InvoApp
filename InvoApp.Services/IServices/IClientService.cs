@@ -9,8 +9,9 @@ namespace InvoApp.Services.IServices
 {
     public interface IClientService
     {
-        Task<DataResponse<string>> CreateClient(CreateClientDTO request);
+        Task<DataResponse<string>> CreateClient(InputClientDTO request);
         Task<DataResponse<List<ClientDTO>>> GetAllClients();
         Task<DataResponse<string>> DeleteClient(int id);
+        Task<DataResponse<string>> UpdateClient(InputClientDTO request, int id);
     }
 }

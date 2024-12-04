@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "InvoApp.Services/1.0.0": {
         "dependencies": {
+          "InvoApp.Common": "1.0.0",
           "InvoApp.Models": "1.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.20",
           "Microsoft.AspNetCore.OpenApi": "7.0.20",
@@ -654,6 +655,11 @@
           }
         }
       },
+      "InvoApp.Common/1.0.0": {
+        "runtime": {
+          "InvoApp.Common.dll": {}
+        }
+      },
       "InvoApp.Models/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.20",
@@ -1157,6 +1163,11 @@
       "sha512": "sha512-IXoJOXIqc39AIe+CIR7koBtRGMiCt/LPM3lI+PELtDIy9XdyeSrwXFdWV9dzJ2Awl0paLWUaknLxFQ5HpHZUog==",
       "path": "system.windows.extensions/6.0.0",
       "hashPath": "system.windows.extensions.6.0.0.nupkg.sha512"
+    },
+    "InvoApp.Common/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "InvoApp.Models/1.0.0": {
       "type": "project",

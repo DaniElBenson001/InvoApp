@@ -9,6 +9,7 @@ namespace InvoApp.Models.DtoModels
 {
     public record class ClientDTO
     {
+        public int ClientId {  get; set; }
         public string CompanyName { get; set; } = string.Empty;
         public string ContactName { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;

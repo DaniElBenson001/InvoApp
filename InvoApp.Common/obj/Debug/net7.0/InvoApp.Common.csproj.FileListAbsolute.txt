@@ -1,0 +1,11 @@
+C:\Projects\InvoApp\InvoApp.Common\bin\Debug\net7.0\InvoApp.Common.deps.json
+C:\Projects\InvoApp\InvoApp.Common\bin\Debug\net7.0\InvoApp.Common.dll
+C:\Projects\InvoApp\InvoApp.Common\bin\Debug\net7.0\InvoApp.Common.pdb
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.AssemblyInfoInputs.cache
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.AssemblyInfo.cs
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.csproj.CoreCompileInputs.cache
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.dll
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\refint\InvoApp.Common.dll
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\InvoApp.Common.pdb
+C:\Projects\InvoApp\InvoApp.Common\obj\Debug\net7.0\ref\InvoApp.Common.dll

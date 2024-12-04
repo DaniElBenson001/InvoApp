@@ -1,4 +1,5 @@
-﻿using InvoApp.Models.DtoModels;
+﻿using InvoApp.Common.Constants;
+using InvoApp.Models.DtoModels;
 using InvoApp.Models.Entities;
 using InvoApp.Services.Data;
 using InvoApp.Services.IServices;
@@ -55,7 +56,7 @@ namespace InvoApp.Services.Services
                 if (user)
                 {
                     userResponse.Status = false;
-                    userResponse.StatusMessage = "User Already Exists!";
+                    userResponse.StatusMessage = Messages.ErrorMessage.UserAlreadyExists;
                     return userResponse;
                 }
 
@@ -63,13 +64,13 @@ namespace InvoApp.Services.Services
                 await _context.SaveChangesAsync();
 
                 userResponse.Status = true;
-                userResponse.StatusMessage = "Successful";
+                userResponse.StatusMessage = Messages.SuccessMessage.BaseSuccess;
                 return userResponse;
             }
             catch (Exception ex) when (ex is SqlException || ex is DbUpdateException)
             {
                 userResponse.Status = false;
-                userResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                userResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 userResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
             return userResponse;
@@ -86,7 +87,7 @@ namespace InvoApp.Services.Services
                 if (userID == 0 || _httpContextAccessor.HttpContext == null)
                 {
                     infoResponse.Status = false;
-                    infoResponse.StatusMessage = "User Not Found!";
+                    infoResponse.StatusMessage = Messages.ErrorMessage.UserNotFound;
                     return infoResponse;
                 }
 
@@ -101,14 +102,14 @@ namespace InvoApp.Services.Services
                     .FirstOrDefaultAsync();
 
                 infoResponse.Status = true;
-                infoResponse.StatusMessage = "Successful";
+                infoResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 infoResponse.Data = userData;
                 return infoResponse;
             }
             catch (Exception ex) when (ex is SqlException)
             {
                 infoResponse.Status = false;
-                infoResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                infoResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 infoResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
             return infoResponse;

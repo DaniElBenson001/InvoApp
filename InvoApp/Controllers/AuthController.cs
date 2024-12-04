@@ -1,11 +1,12 @@
-﻿using InvoApp.Models.DtoModels;
+﻿using InvoApp.Common.Constants;
+using InvoApp.Models.DtoModels;
 using InvoApp.Services.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InvoApp.Controllers
 {
-    [Route("v1/[controller]")]
+    [Route("/")]
     [ApiController]
     public class AuthController : ControllerBase
     {
@@ -15,7 +16,7 @@ namespace InvoApp.Controllers
             _authService = authService;
         }
 
-        [HttpPost("login")]
+        [HttpPost(ApiRoutes.Version + ApiRoutes.Auth.Base + ApiRoutes.Auth.Login)]
         public async Task<IActionResult> Login(UserLoginDTO request)
         {
             var res = await _authService.Login(request);

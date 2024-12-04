@@ -1,4 +1,5 @@
-﻿using InvoApp.Models.DtoModels;
+﻿using InvoApp.Common.Constants;
+using InvoApp.Models.DtoModels;
 using InvoApp.Models.Entities;
 using InvoApp.Services.Data;
 using InvoApp.Services.IServices;
@@ -42,7 +43,7 @@ namespace InvoApp.Services.Services
                 if(user == null)
                 {
                     loginResponse.Status = false;
-                    loginResponse.StatusMessage = "User Not Found!";
+                    loginResponse.StatusMessage = Messages.ErrorMessage.UserNotFound;
                     return loginResponse;
                 }
 
@@ -51,7 +52,7 @@ namespace InvoApp.Services.Services
                 if(!isPasswordValid)
                 {
                     loginResponse.Status = false;
-                    loginResponse.StatusMessage = "Incorrect Email or Password, How can we know?";
+                    loginResponse.StatusMessage = Messages.ErrorMessage.IncorrectPassword;
                     return loginResponse;
                 }
 
@@ -67,14 +68,14 @@ namespace InvoApp.Services.Services
 
 
                 loginResponse.Status = true;
-                loginResponse.StatusMessage = "Successful";
+                loginResponse.StatusMessage = Messages.SuccessMessage.BaseSuccess;
                 loginResponse.Data = loginData;
                 return loginResponse;
             }
             catch (Exception ex) when (ex is SqlException)
             {
                 loginResponse.Status = false;
-                loginResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                loginResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 loginResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
 

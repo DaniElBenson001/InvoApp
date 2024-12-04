@@ -1,4 +1,5 @@
-﻿using InvoApp.Models.DtoModels;
+﻿using InvoApp.Common.Constants;
+using InvoApp.Models.DtoModels;
 using InvoApp.Models.Entities;
 using InvoApp.Services.Data;
 using InvoApp.Services.IServices;
@@ -27,7 +28,7 @@ namespace InvoApp.Services.Services
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<DataResponse<string>> CreateClient(CreateClientDTO request)
+        public async Task<DataResponse<string>> CreateClient(InputClientDTO request)
         {
             DataResponse<string> clientResponse = new();
 
@@ -40,10 +41,10 @@ namespace InvoApp.Services.Services
             {
                 userID = Convert.ToInt32(userHttpAccessor!.User.FindFirstValue(ClaimTypes.NameIdentifier));
 
-                if(userID == 0 || _httpContextAccessor.HttpContext == null)
+                if(userHttpAccessor == null)
                 {
                     clientResponse.Status = false;
-                    clientResponse.StatusMessage = "Oops, User Not Found, kindly Login!";
+                    clientResponse.StatusMessage = Messages.ErrorMessage.UserNotFound;
                     return clientResponse;
                 }
 
@@ -52,7 +53,7 @@ namespace InvoApp.Services.Services
                 if (client)
                 {
                     clientResponse.Status = false;
-                    clientResponse.StatusMessage = "Oops, Client Already Exists";
+                    clientResponse.StatusMessage = Messages.ErrorMessage.ClientAlreadyExists;
                     return clientResponse;
 
                 }
@@ -77,13 +78,13 @@ namespace InvoApp.Services.Services
                 await _context.SaveChangesAsync();
 
                 clientResponse.Status = true;
-                clientResponse.StatusMessage = "Successful! New Client Added";
+                clientResponse.StatusMessage = Messages.SuccessMessage.ClientAddedSuccess;
                 return clientResponse;
             }
             catch (Exception ex) when (ex is SqlException || ex is DbUpdateException)
             {
                 clientResponse.Status = false;
-                clientResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                clientResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 clientResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
             return clientResponse;
@@ -110,6 +111,7 @@ namespace InvoApp.Services.Services
                 {
                     getClients.Add(new ClientDTO
                     {
+                        ClientId = clients.Id,
                         CompanyName = clients.CompanyName,
                         ContactName = clients.ContactName,
                         Email = clients.Email,
@@ -124,18 +126,74 @@ namespace InvoApp.Services.Services
                 }
 
                 clientResponse.Status = true;
-                clientResponse.StatusMessage = "Successful! Here is the List";
+                clientResponse.StatusMessage = Messages.SuccessMessage.ClientListSuccess;
                 clientResponse.Data = getClients;
             }
             catch (Exception ex) when (ex is SqlException || ex is DbUpdateException)
             {
                 clientResponse.Status = false;
-                clientResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                clientResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 clientResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
 
             return clientResponse;
         }
+
+        public async Task<DataResponse<string>> UpdateClient(InputClientDTO request, int id)
+        {
+            DataResponse<string> clientResponse = new();
+            int userID;
+            var userHttpAccessor = _httpContextAccessor.HttpContext;
+
+            try
+            {
+                userID = Convert.ToInt32(userHttpAccessor!.User.FindFirstValue(ClaimTypes.NameIdentifier));
+
+                if(userHttpAccessor == null)
+                {
+                    clientResponse.Status = false;
+                    clientResponse.StatusMessage = Messages.ErrorMessage.UserNotFound;
+                    return clientResponse;
+                }
+
+                var client = await _context.Clients
+                    .FirstOrDefaultAsync(c => c.Id == id && c.UserId == userID);
+
+                if(client == null)
+                {
+                    clientResponse.Status = false;
+                    clientResponse.StatusMessage = Messages.ErrorMessage.ClientNotFound;
+                    return clientResponse;
+                }
+
+                client.CompanyName = !string.IsNullOrWhiteSpace(request.CompanyName) ? request.CompanyName : client.CompanyName;
+                client.ContactName = !string.IsNullOrWhiteSpace(request.ContactName) ? request.ContactName : client.ContactName;
+
+                client.Email = !string.IsNullOrWhiteSpace(request.Email) ? request.Email : client.Email;
+                client.PhoneNumber = !string.IsNullOrWhiteSpace(request.PhoneNumber) ? request.PhoneNumber : client.PhoneNumber;
+
+                client.BillingAddress = !string.IsNullOrWhiteSpace(request.BillingAddress) ? request.BillingAddress : client.BillingAddress;
+                client.ShippingAddress = !string.IsNullOrWhiteSpace(request.ShippingAddress) ? request.ShippingAddress : client.ShippingAddress;
+                client.PaymentTerms = !string.IsNullOrWhiteSpace(request.PaymentTerms) ? request.PaymentTerms : client.PaymentTerms;
+
+                client.UpdatedAt = DateTime.UtcNow;
+
+                _context.Clients.Update(client);
+                await _context.SaveChangesAsync();
+
+                clientResponse.Status = true;
+                clientResponse.StatusMessage = Messages.SuccessMessage.ClientUpdatedSuccess;
+                return clientResponse;
+            }
+            catch(Exception ex) when (ex is SqlException || ex is DbUpdateException)
+            {
+                clientResponse.Status = false;
+                clientResponse.StatusMessage = Messages.ErrorMessage.BaseError;
+                clientResponse.ErrorMessage = $"{ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
+                return clientResponse;
+            }
+        }
+
         public async Task<DataResponse<string>> DeleteClient(int id)
         {
             DataResponse<string> clientResponse = new();
@@ -145,11 +203,11 @@ namespace InvoApp.Services.Services
             try
             {
                 if (userHttpAccessor == null ||
-                 !int.TryParse(userHttpAccessor.User.FindFirstValue(ClaimTypes.NameIdentifier), out int userID) ||
-                 userID == 0)
+             !int.TryParse(userHttpAccessor.User.FindFirstValue(ClaimTypes.NameIdentifier), out int userID) ||
+             userID == 0)
                 {
                     clientResponse.Status = false;
-                    clientResponse.StatusMessage = "Oops, User Not Found, kindly Login!";
+                    clientResponse.StatusMessage = Messages.ErrorMessage.UserNotFound;
                     return clientResponse;
                 }
 
@@ -159,14 +217,14 @@ namespace InvoApp.Services.Services
                 if (client == null)
                 {
                     clientResponse.Status = false;
-                    clientResponse.StatusMessage = "Client Not Found";
+                    clientResponse.StatusMessage = Messages.ErrorMessage.ClientNotFound;
                     return clientResponse;
                 }
 
                 if (client.IsDeleted)
                 {
                     clientResponse.Status = false;
-                    clientResponse.StatusMessage = "Client Already Deleted";
+                    clientResponse.StatusMessage = Messages.ErrorMessage.ClientAlreadyDeleted;
                     return clientResponse;
                 }
 
@@ -176,14 +234,14 @@ namespace InvoApp.Services.Services
                 await _context.SaveChangesAsync();
 
                 clientResponse.Status = true;
-                clientResponse.StatusMessage = $" {client.ContactName ?? "Client"} Successfully Deleted";
+                clientResponse.StatusMessage = $"{client.ContactName ?? "Client"}" + Messages.SuccessMessage.ClientDeletedSuccess;
                 return clientResponse;
 
             }
             catch (Exception ex) when (ex is SqlException || ex is DbUpdateException)
             {
                 clientResponse.Status = false;
-                clientResponse.StatusMessage = "Unsuccessful, An Error Occurred; It isn't your Fault!";
+                clientResponse.StatusMessage = Messages.ErrorMessage.BaseError;
                 clientResponse.ErrorMessage = $"{ex.GetType().Name}: {ex.Message} ||| {ex.StackTrace} ||| {DateTime.UtcNow}";
             }
             return clientResponse;

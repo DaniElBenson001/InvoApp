@@ -24,6 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\InvoApp.Common\InvoApp.Common.csproj" />
     <ProjectReference Include="..\InvoApp.Models\InvoApp.Models.csproj" />
   </ItemGroup>
 
